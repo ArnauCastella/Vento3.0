@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-79dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="110dp"
+            android:src="@drawable/vento_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/log_in_title"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/log_in_email_et"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="17dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="@string/email_placeholder"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/log_in_password_et"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="17dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="@string/password_placeholder"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/log_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="17dp"
+            android:backgroundTint="@color/button_yellow"
+            android:text="@string/log_in_button" />
+
+        <Button
+            android:id="@+id/dont_have_account_button"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="17dp"
+            android:backgroundTint="@color/button_grey"
+            android:text="@string/dont_have_account_button" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

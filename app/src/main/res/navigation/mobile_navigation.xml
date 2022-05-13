@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.vento30.ui.events_search.HomeFragment"
+        android:label="Events Search"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_my_events"
+        android:name="com.example.vento30.ui.my_events.MyEventsFragment"
+        android:label="My Events"
+        tools:layout="@layout/fragment_my_events" />
+
+    <fragment
+        android:id="@+id/nav_my_timeline"
+        android:name="com.example.vento30.ui.my_timeline.MyTimelineFragment"
+        android:label="My Timeline"
+        tools:layout="@layout/fragment_my_timeline" />
+
+    <fragment
+        android:id="@+id/nav_my_messages"
+        android:name="com.example.vento30.ui.my_messages.MyMessagesFragment"
+        android:label="My Messages"
+        tools:layout="@layout/fragment_my_messages" />
+
+    <fragment
+        android:id="@+id/nav_search_users"
+        android:name="com.example.vento30.ui.search_users.SearchUsersFragment"
+        android:label="Search Users"
+        tools:layout="@layout/fragment_search_users" />
+</navigation>
