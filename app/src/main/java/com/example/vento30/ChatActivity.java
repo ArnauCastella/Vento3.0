@@ -97,7 +97,7 @@ public class ChatActivity extends AppCompatActivity {
                 getMessages();
             };
         };
-        t.scheduleAtFixedRate(tt,500,3000);
+        t.scheduleAtFixedRate(tt,500,1000);
     }
 
     private void updateUI () {
