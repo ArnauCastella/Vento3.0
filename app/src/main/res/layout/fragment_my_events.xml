@@ -6,10 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".ui.my_events.MyEventsFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_events_search_recycler_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:padding="10dp"/>
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="parent"
+        tools:ignore="MissingConstraints">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/chips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
+                    android:id="@+id/chipPastAttended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
+                    android:text="@string/chip_attended_past"/>
+                <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
+                    android:id="@+id/chipFutureAttended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
+                    android:text="@string/chip_attending_future"/>
+                <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
+                    android:id="@+id/chipByMe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
+                    android:text="@string/chip_created_by_me"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/filter_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/my_events"
+            android:textSize="24sp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_events_search_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

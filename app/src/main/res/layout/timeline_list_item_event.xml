@@ -9,36 +9,46 @@
     android:layout_marginTop="12dp"
     android:layout_marginStart="12dp"
     android:layout_marginEnd="12dp"
-    android:background="@drawable/timeline_custom_background">
+    android:background="@drawable/timeline_custom_background"
+    android:gravity="center_vertical">
 
     <RelativeLayout
         android:id="@+id/box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="5dp">
-        <TextView
-            android:id="@+id/timeline_event_title"
+        android:layout_marginStart="5dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event Title"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/timeline_event_start_date"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/timeline_event_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/timeline_event_title"
+                android:text="Event Start Date"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/timeline_event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Title"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/details_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/timeline_event_title"
-            android:layout_marginStart="12dp"
-            android:text="Event Start Date"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/timeline_event_press_to_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
             android:layout_alignParentRight="true"
-            android:text="Press for Details"
-            android:textColor="@color/dark_vento_grey"/>
+            android:backgroundTint="@color/blue_button"
+            android:text="Details"
+            android:textColor="@color/white" />
     </RelativeLayout>
+
 </LinearLayout>
 

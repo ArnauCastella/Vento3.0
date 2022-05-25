@@ -11,6 +11,11 @@
     <string name="create_event">Create Event</string>
     <string name="create_title">Title</string>
     <string name="create_description">Description</string>
+    <string name="create_location">Location</string>
+    <string name="create_participators">Number of Participators</string>
+
+    <string name="delete_event">Delete Event</string>
+
     <string name="create_category">Category</string>
     <string name="create_start_date">Start Date</string>
     <string name="create_end_date">End Date</string>
@@ -23,6 +28,9 @@
     <string name="password_placeholder">password</string>
     <string name="log_in_button">Log In</string>
     <string name="dont_have_account_button">Don\'t have an account?</string>
+
+    <string name="press_for_details">Press for Details</string>
+
 
     <string name="sign_up_title">Sign Up</string>
     <string name="first_name_placeholder">first name</string>
@@ -40,6 +48,7 @@
     <string name="write_review">Write review</string>
     <string name="rating_slider">Rate from very bad to very good (0-10)</string>
     <string name="post_review">Post review</string>
+    <string name="discard_review">Discard review</string>
 
     <string name="explore_events">Explore Events</string>
     <string name="my_events">My Events</string>
@@ -47,5 +56,12 @@
     <string name="my_messages">My Messages</string>
     <string name="search_users">Search Users</string>
     <string name="log_out">Log Out</string>
+
+    <string name="chip_best">Order by Bests</string>
+    <string name="chip_attended_past">Attended in the past</string>
+    <string name="chip_attending_future">Attending in the future</string>
+    <string name="chip_created_by_me">My Events</string>
+
+    <string name="stop_attending">Stop Attending</string>
 
 </resources>

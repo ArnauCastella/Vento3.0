@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +20,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.example.vento30.API;
 import com.example.vento30.Event;
+import com.example.vento30.EventAPI;
+import com.example.vento30.FriendRequestCallback;
+import com.example.vento30.GetEventsCallback;
 import com.example.vento30.PastEventActivity;
 import com.example.vento30.R;
 import com.example.vento30.databinding.FragmentMyTimelineBinding;
@@ -31,7 +39,8 @@ public class MyTimelineFragment extends Fragment {
     // Timeline Recycler View
     private RecyclerView mTimelineRecyclerView;
     private myTimelineAdapter mAdapter;
-    private static List<Event> mEvents; // Events array.
+    // private static List<Event> mEvents; // Events array.
+    private static List<EventAPI> mEventsAPI; // Events array.
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +58,7 @@ public class MyTimelineFragment extends Fragment {
         mTimelineRecyclerView = (RecyclerView)root.findViewById(R.id.timeline_recycler_view);
         mTimelineRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mEvents = new ArrayList<Event>();
+        mEventsAPI = new ArrayList<EventAPI>();
         createEvents();
         updateUI();
 
@@ -67,7 +76,7 @@ public class MyTimelineFragment extends Fragment {
      * Updates the UI of the recycler view.
      */
     private void updateUI () {
-        mAdapter = new myTimelineAdapter(mEvents);
+        mAdapter = new myTimelineAdapter(mEventsAPI);
         mTimelineRecyclerView.setAdapter(mAdapter);
     }
 
@@ -75,27 +84,36 @@ public class MyTimelineFragment extends Fragment {
      * Creates a list of events with auxiliary data.
      */
     private void createEvents() {
-        // Retrieving the value using its keys the file name
-        // must be same in both saving and retrieving the data
-        for (int i = 0; i < 15; i++) {
+        // API.DataManager.getMyEventsAPI().clear();
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        API.attendedInThePastEvents(new GetEventsCallback() {
+            @Override
+            public void getAllEventsOK() {
+                mEventsAPI.addAll(API.DataManager.getMyEventsAPI());
+                updateUI();
+            }
 
-            Event  event = new Event("My Event Timeline "+i, "Description", "Category", "Today", "Tomorrow", "Spain", "No image");
-            mEvents.add(event);
-        }
+            @Override
+            public void getAllEventsKO() {
+                Toast.makeText(getActivity(),"Could not get my events!",Toast.LENGTH_SHORT).show();
+            }
+        }, queue);
     }
+
+
 
     /**
      * Event Adapter for Recycler View.
      */
     private class myTimelineAdapter extends RecyclerView.Adapter<EventHolder> {
 
-        private List<Event> mEvents;
+        private List<EventAPI> mEventsAPI;
 
         // Checks the deleted task position.
         //private int mRecentlyDeletedTaskPosition;
 
-        public myTimelineAdapter(List<Event> events) {
-            mEvents = events;
+        public myTimelineAdapter(List<EventAPI> events) {
+            mEventsAPI = events;
         }
 
         @Override
@@ -106,13 +124,13 @@ public class MyTimelineFragment extends Fragment {
 
         @Override
         public void onBindViewHolder (EventHolder holder, int position) {
-            Event event = mEvents.get(position);
+            EventAPI event = mEventsAPI.get(position);
             holder.bind(event);
         }
 
         @Override
         public int getItemCount() {
-            return mEvents.size();
+            return mEventsAPI.size();
         }
 
         /*
@@ -131,10 +149,12 @@ public class MyTimelineFragment extends Fragment {
      */
     private class EventHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private Event mEvent;
+        private EventAPI mEventAPI;
 
         private TextView mTitleTextView;
         private TextView mDateTextView;
+
+        private Button mDetailsButton;
 
         public EventHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.timeline_list_item_event, parent, false));
@@ -142,30 +162,34 @@ public class MyTimelineFragment extends Fragment {
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.timeline_event_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.timeline_event_start_date);
+
+            mDetailsButton = (Button) itemView.findViewById(R.id.details_button);
+            mDetailsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), PastEventActivity.class);
+                    intent.putExtra("title", mEventAPI.getName());
+                    intent.putExtra("description", mEventAPI.getDescription());
+                    intent.putExtra("start",mEventAPI.getEventStart_date()); // Put anything what you want
+                    intent.putExtra("end",mEventAPI.getEventEnd_date()); // Put anything what you want
+                    intent.putExtra("location",mEventAPI.getLocation()); // Put anything what you want
+
+                    startActivity(intent);
+                }
+            });
         }
 
-        public void bind(Event event) {
+        public void bind(EventAPI event) {
             if (event != null) {
-                mEvent = event;
-                mTitleTextView.setText(mEvent.getTitle());
-                mDateTextView.setText(mEvent.getStartDate());
+                mEventAPI = event;
+                mTitleTextView.setText(mEventAPI.getName());
+                String formattedDate = mEventAPI.getEventStart_date().substring(0, 10);
+                mDateTextView.setText(formattedDate);
             }
         }
 
         @Override
         public void onClick(View v) {
-            //Toast.makeText(getContext(), "Clicked!", Toast.LENGTH_LONG).show();
-
-            // Intent to new activity.
-            Intent intent = new Intent(getActivity(), PastEventActivity.class);
-            intent.putExtra("title", mEvent.getTitle());
-            intent.putExtra("description", mEvent.getDescription());
-            intent.putExtra("start",mEvent.getStartDate()); // Put anything what you want
-            intent.putExtra("end",mEvent.getEndDate()); // Put anything what you want
-            intent.putExtra("location",mEvent.getLocation()); // Put anything what you want
-
-            startActivity(intent);
-
         }
     }
 }

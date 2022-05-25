@@ -18,12 +18,14 @@
             android:id="@+id/event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Event Title"
             android:gravity="center"/>
         <TextView
             android:id="@+id/event_start_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Event Start Date"
             android:gravity="center"/>
     </LinearLayout>

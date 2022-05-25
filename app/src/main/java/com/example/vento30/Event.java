@@ -1,6 +1,22 @@
 package com.example.vento30;
 
 public class Event {
+    /*
+     "id": 10,
+             "name": "Drawing Meet Up of the month: January",
+             "owner_id": 1,
+             "date": "2022-01-01T12:00:00.000Z",
+             "image": "https://i.imgur.com/Ou3LVpb.jpg",
+             "location": "Barcelona",
+             "description": "Come paint with a group of artists. Bring your own
+    materials and canvas.",
+            "eventStart_date": "2022-01-12T15:00:00.000Z",
+            "eventEnd_date": "2022-01-12T17:30:00.000Z",
+            "n_participators": 50,
+            "slug": null,
+            "type": "Arts"
+
+     */
     private String title;
     private String description;
     private String category;

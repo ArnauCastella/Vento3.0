@@ -22,5 +22,8 @@
 
     <color name="vento_yellow">#FFDB61</color>
     <color name="vento_orange">#FF4800</color>
+    <color name="chip_grey">#D6D3D3</color>
+
+
 
 </resources>

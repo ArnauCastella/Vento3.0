@@ -26,34 +26,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
                 <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
                     android:id="@+id/chip0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Chip0"/>
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
+                    android:text="@string/chip_best"/>
                 <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
                     android:id="@+id/chip1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
                     android:text="Chip1"/>
                 <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
                     android:id="@+id/chip2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
                     android:text="Chip2"/>
                 <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
                     android:id="@+id/chip3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
                     android:text="Chip3"/>
                 <com.google.android.material.chip.Chip
+                    android:theme="@style/Theme.MaterialComponents.Bridge"
                     android:id="@+id/chip4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    app:chipBackgroundColor="@color/chip_grey"
+                    android:textColor="@android:color/black"
                     android:text="Chip4"/>
             </LinearLayout>
             <!--

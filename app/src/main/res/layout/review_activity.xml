@@ -28,7 +28,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/log_in_email_et"
+                android:id="@+id/review_text_et"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_marginStart="12dp"
@@ -49,6 +49,7 @@
 
             <!-- Discrete slider -->
             <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -57,16 +58,32 @@
                 android:stepSize="1.0"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/post_review_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/post_review"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_alignParentBottom="true"
-            android:backgroundTint="@color/green_button"/>
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/post_review_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/green_button"
+                android:text="@string/post_review" />
+
+            <Button
+                android:id="@+id/discard_review_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/red_button"
+                android:text="@string/discard_review" />
+        </LinearLayout>
+
+
 
     </RelativeLayout>
 

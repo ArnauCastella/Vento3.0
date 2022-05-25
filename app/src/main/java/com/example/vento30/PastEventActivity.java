@@ -33,12 +33,14 @@ public class PastEventActivity extends AppCompatActivity {
 
         mImage.setImageResource(R.drawable.festival_image);
 
+
         mEventTitle = (TextView) findViewById(R.id.event_title_tv);
         mEventDescription = (TextView) findViewById(R.id.event_description_tv);
         mEventStartDate = (TextView) findViewById(R.id.event_startdate_tv);
         mEventEndDate = (TextView) findViewById(R.id.event_enddate_tv);
         mEventLocation = (TextView) findViewById(R.id.event_location_tv);
 
+        int id = intent.getIntExtra("id", 0);
         String title = intent.getStringExtra("title") + " (Past)";
         String description = intent.getStringExtra("description");
         String startDate = "Start: " + intent.getStringExtra("start");
@@ -56,7 +58,9 @@ public class PastEventActivity extends AppCompatActivity {
         mRatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PastEventActivity.this, ReviewActivity.class));
+                Intent i = new Intent(PastEventActivity.this, ReviewActivity.class);
+                i.putExtra("eventId", id);
+                startActivity(i);
             }
         });
 

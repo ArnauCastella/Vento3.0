@@ -4,19 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.my_messages.MyMessagesFragment">
+    tools:context=".ui.search_users.SearchUsersFragment">
 
-    <TextView
-        android:id="@+id/text_my_messages"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/friend_request_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have X friend request(s)"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="17dp"
+            android:textSize="18dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_friend_requests_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/chats_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chats"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="17dp"
+            android:textSize="18dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chats_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:padding="10dp"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
