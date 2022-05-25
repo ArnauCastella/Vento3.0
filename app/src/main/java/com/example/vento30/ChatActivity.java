@@ -24,6 +24,8 @@ import com.example.vento30.ui.events_search.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -43,8 +45,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_activity_xml);
 
-
-        // Preparing messages recycler view.
+    // Preparing messages recycler view.
         mMessagesRecyclerView = (RecyclerView) findViewById(R.id.recycler_gchat);
         mMessagesRecyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
 
@@ -85,6 +86,18 @@ public class ChatActivity extends AppCompatActivity {
                 }, queue, mReceivedID, message);
             }
         });
+
+        // Timer to get messages.
+
+        Timer t = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                //System.out.println("TIMER");
+                getMessages();
+            };
+        };
+        t.scheduleAtFixedRate(tt,500,3000);
     }
 
     private void updateUI () {

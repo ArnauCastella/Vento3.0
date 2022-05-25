@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class API {
+    private int mStatusCode = 0;
     /**
      * Registration of a user.
      * @param queue request queue.
@@ -165,35 +167,30 @@ public class API {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, object, new Response.Listener<JSONObject>() {
+        /*
+        StringRequest request = new StringRequest(Request.Method.PUT, url, object, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
                 callback.postReviewOK();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.err.println(error);
                 callback.postReviewKO();
             }
         }) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                // below line we are creating a map for
-                // storing our values in key and value pair.
-                Map<String, String> params = new HashMap<String, String>();
-
-                // on below line we are passing our key
-                // and value pair to our parameters.
-                params.put("Authorization", DataManager.token);
-
-                // at last we are
-                // returning our params.
-                return params;
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                if (response != null) {
+                    mStatusCode = response.statusCode;
+                }
+                return super.parseNetworkResponse(response);
             }
         };
 
-        queue.add(jsonObjectRequest);
+        queue.add(request);
+
+         */
     }
 
     public static void getFriends(GetFriendsCallback callback, RequestQueue queue) {
