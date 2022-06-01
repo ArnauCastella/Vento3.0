@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/item_custom_background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_textview"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/review_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Username"
+            android:gravity="start"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/review_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="10"
+            android:gravity="start"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/review_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Review Text"
+            android:gravity="start"
+            android:background="@drawable/rounded_textview"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -17,7 +17,7 @@ public class PastEventActivity extends AppCompatActivity {
     private TextView mEventEndDate;
     private TextView mEventLocation;
 
-    private Button mRatingButton;
+    private Button mSeeReviewsButton;
     private Button mGoBackButton;
 
     private ImageView mImage;
@@ -52,14 +52,15 @@ public class PastEventActivity extends AppCompatActivity {
         mEventEndDate.setText(endDate);
         mEventLocation.setText(location);
 
-        mRatingButton = (Button) findViewById(R.id.rating_button);
+        mSeeReviewsButton = (Button) findViewById(R.id.see_reviews_button);
         mGoBackButton = (Button) findViewById(R.id.go_back_button);
 
-        mRatingButton.setOnClickListener(new View.OnClickListener() {
+        mSeeReviewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(PastEventActivity.this, ReviewActivity.class);
-                i.putExtra("eventId", id);
+                Intent i = new Intent(PastEventActivity.this, SeeReviewsActivity.class);
+                i.putExtra("eventID", id);
+                i.putExtra("name", title);
                 startActivity(i);
             }
         });
@@ -67,7 +68,8 @@ public class PastEventActivity extends AppCompatActivity {
         mGoBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent i = new Intent(PastEventActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
 

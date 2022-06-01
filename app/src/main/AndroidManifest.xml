@@ -36,7 +36,10 @@
         <activity android:name=".MyEventActivity" android:theme="@style/Theme.Vento30.NoActionBar"/>
         <activity android:name=".MyFutureEvent" android:theme="@style/Theme.Vento30.NoActionBar"/>
         <activity android:name=".ChatActivity" android:theme="@style/Theme.Vento30.NoActionBar"/>
+        <activity android:name=".SeeReviewsActivity" android:theme="@style/Theme.Vento30.NoActionBar"/>
 
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
     </application>
 </manifest>

@@ -36,6 +36,12 @@
         tools:layout="@layout/fragment_search_users" />
 
     <fragment
+        android:id="@+id/nav_events_map"
+        android:name="com.example.vento30.ui.events_map.MapFragment"
+        android:label="Events Map"
+        tools:layout="@layout/fragment_events_map" />
+
+    <fragment
         android:id="@+id/nav_log_out"
         android:name="com.example.vento30.ui.logout.LogoutFragment"
         android:label="Log Out"

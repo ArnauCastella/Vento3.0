@@ -10,6 +10,8 @@ public class UserAPI {
     private String email;
     private String password;
     private String image;
+    private int puntuation;
+    private String comentary;
 
     public UserAPI(JSONObject object) throws JSONException {
         this.id = object.getInt("id");
@@ -18,6 +20,16 @@ public class UserAPI {
         this.email = object.getString("email");
         // this.password = object.getString("password");
         this.image = object.getString("image");
+    }
+
+    public UserAPI(JSONObject object, int review) throws JSONException {
+        this.id = object.getInt("id");
+        this.name = object.getString("name");
+        this.last_name = object.getString("last_name");
+        this.email = object.getString("email");
+        // this.password = object.getString("password");
+        this.puntuation = object.getInt("puntuation");
+        this.comentary = object.getString("comentary");
     }
 
     /**
@@ -31,18 +43,6 @@ public class UserAPI {
         this.last_name = object.getString("last_name");
         this.email = object.getString("email");
         this.image = object.getString("image");
-    }
-
-    public UserAPI(JSONObject object, int getFriends) throws JSONException {
-        this.id = object.getInt("id");
-        this.name = object.getString("name");
-        this.last_name = object.getString("last_name");
-        this.email = object.getString("email");
-        this.image = object.getString("image");
-    }
-
-    public UserAPI() {
-
     }
 
     public int getId() {
@@ -93,6 +93,14 @@ public class UserAPI {
         this.image = image;
     }
 
+    public int getPuntuation() {
+        return puntuation;
+    }
+
+    public String getComentary() {
+        return comentary;
+    }
+
     @Override
     public String toString() {
         return "UserAPI{" +
@@ -102,6 +110,8 @@ public class UserAPI {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", image='" + image + '\'' +
+                ", puntuation=" + puntuation +
+                ", comentary='" + comentary + '\'' +
                 '}';
     }
 }

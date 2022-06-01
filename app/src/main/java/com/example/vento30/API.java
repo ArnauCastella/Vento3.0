@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -513,6 +514,7 @@ public class API {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                System.out.println(error);
                 callback.logInKO();
             }
         });
@@ -741,6 +743,54 @@ public class API {
             @Override
             public void onErrorResponse(VolleyError error) {
                 callback.getMessagesKO();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                // below line we are creating a map for
+                // storing our values in key and value pair.
+                Map<String, String> params = new HashMap<String, String>();
+
+                // on below line we are passing our key
+                // and value pair to our parameters.
+                params.put("Authorization", DataManager.token);
+
+                // at last we are
+                // returning our params.
+                return params;
+            }
+        };
+
+        // Add the request to the RequestQueue.
+        queue.add(request);
+    }
+
+    public static void getReviews(GetReviewsCallback callback, RequestQueue queue, int id) {
+        String url = "http://puigmal.salle.url.edu/api/v2/events/"+Integer.toString(id)+"/assistances";
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        System.out.println(response);
+                        for (int i=0;i<response.length();i++){
+                            //Adding each element of JSON array into ArrayList
+                            try {
+                                if (response.getJSONObject(i).optInt("puntuation", -1) != -1) {
+                                    DataManager.getMyReviews().add(new UserAPI(response.getJSONObject(i), 0));
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        System.out.println(url);
+                        System.out.println(Arrays.toString(DataManager.getMyReviews().toArray()));
+                        callback.getReviewsOK();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.getReviewsKO();
             }
         }) {
             @Override
@@ -1016,6 +1066,8 @@ public class API {
         // List of messages with user
         public static List<MessageAPI> myChatMessages = new ArrayList<>(); // Events array.
 
+        public static List<UserAPI> myReviews = new ArrayList<>();
+
 
         /**
          * getters and setters
@@ -1092,6 +1144,14 @@ public class API {
 
         public static void setMyChattingUser(UserAPI myChattingUser) {
             DataManager.myChattingUser = myChattingUser;
+        }
+
+        public static List<UserAPI> getMyReviews() {
+            return myReviews;
+        }
+
+        public static void setMyReviews(List<UserAPI> myReviews) {
+            DataManager.myReviews = myReviews;
         }
 
         public static List<MessageAPI> getMyChatMessages() {
